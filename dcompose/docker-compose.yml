@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  cms-tools:
+    build: ./cms
+    volumes:
+      - ./cms:/usr/src/app
+    ports:
+      - 7001:80
+  websit:
+    image: php:apache
+    volumes:
+      - ./onl:/var/www/html
+    ports:
+      - 7002:80
+    depends_on:
+      - cms-tools
